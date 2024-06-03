@@ -1,6 +1,6 @@
 # Instituto Tecnológico de Buenos Aires
 
-![Logo-ITBA](Fotos/Logo-ITBA.png)
+![Logo-ITBA](Logo-ITBA.png)
 
 ## Informática Médica 16.22
 
