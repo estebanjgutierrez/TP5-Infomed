@@ -24,5 +24,5 @@
 
 ---
 
-**Fecha de entrega:** `__` de junio de 2024  
-**Fecha de presentación:** 14 de mayo de 2024
+**Fecha de entrega:** 5 de junio de 2024  
+**Fecha de presentación:** 5 de junio de 2024
