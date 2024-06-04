@@ -49,65 +49,65 @@ Para las tablas Pacientes, Médicos, y Medicamentos, no hay dependencias transit
 
 ## Ejercicio 1
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT nombre, calle, numero
-FROM pacientes
-WHERE ciudad = 'Buenos Aires';
+	SELECT nombre, calle, numero
+	FROM pacientes
+	WHERE ciudad = 'Buenos Aires';
 
-###Output
+Output
 
 ![Nombre de pacientes que viven en Bs. As.](WhatsApp%20Image%202024-06-04%20at%2017.22.55.jpeg)
 
 ## Ejercicio 2
 
-###Codigo utilizado:
+Codigo utilizado:
 
-SELECT medicos.nombre, COUNT(recetas.id_receta) AS cantidad_recetas
-FROM medicos
-JOIN recetas ON medicos.id_medico = recetas.id_medico
-GROUP BY medicos.nombre;
+	SELECT medicos.nombre, COUNT(recetas.id_receta) AS cantidad_recetas
+	FROM medicos
+	JOIN recetas ON medicos.id_medico = recetas.id_medico
+	GROUP BY medicos.nombre;
 
-###Output
+Output
 
 ![Cantidad de recetas emitidas por cada medico](WhatsApp%20Image%202024-06-04%20at%2017.23.39.jpeg)
 
 ## Ejercicio 3
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT P.nombre, C.fecha, C.diagnostico
-FROM pacientes P
-JOIN consultas C ON P.id_paciente = C.id_paciente
-WHERE C.fecha BETWEEN '2024-06-01' AND '2024-06-30';
+	SELECT P.nombre, C.fecha, C.diagnostico
+	FROM pacientes P
+	JOIN consultas C ON P.id_paciente = C.id_paciente
+	WHERE C.fecha BETWEEN '2024-06-01' AND '2024-06-30';
 
-###Output
+Output
 
 ![Pacientes y diagnósticos junio 2024](WhatsApp%20Image%202024-06-04%20at%2017.24.18.jpeg)
 
 ## Ejercicio 4
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT M.nombre, COUNT(R.id_receta) AS Cantidad_Prescripciones
-FROM recetas R
-JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
-WHERE R.id_medico = 2
-GROUP BY M.nombre
-HAVING COUNT(R.id_receta) > 1;
+	SELECT M.nombre, COUNT(R.id_receta) AS Cantidad_Prescripciones
+	FROM recetas R
+	JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
+	WHERE R.id_medico = 2
+	GROUP BY M.nombre
+	HAVING COUNT(R.id_receta) > 1;
 
-###Output
+Output
 
 ![Medicamentos prescritos más de una vez por el médico con ID igual a 2.](WhatsApp%20Image%202024-06-04%20at%2017.27.12.jpeg)
 
 ## Ejercicio 5
 
-###Codigo Utilizado
+Codigo Utilizado
 
-SELECT P.nombre, COUNT(R.id_receta) AS Cantidad_Recetas
-FROM pacientes P
-LEFT JOIN recetas R ON P.id_paciente = R.id_paciente
-GROUP BY P.nombre;
+	SELECT P.nombre, COUNT(R.id_receta) AS Cantidad_Recetas
+	FROM pacientes P
+	LEFT JOIN recetas R ON P.id_paciente = R.id_paciente
+	GROUP BY P.nombre;
 
 ###Output
 
@@ -115,80 +115,80 @@ GROUP BY P.nombre;
 
 ## Ejercicio 6
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT M.nombre, COUNT(R.id_receta) AS Cantidad_Recetas
-FROM recetas R
-JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
-GROUP BY M.nombre
-ORDER BY Cantidad_Recetas DESC
-LIMIT 1;
+	SELECT M.nombre, COUNT(R.id_receta) AS Cantidad_Recetas
+	FROM recetas R
+	JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
+	GROUP BY M.nombre
+	ORDER BY Cantidad_Recetas DESC
+	LIMIT 1;
 
-###Output
+Output
 
 ![Medicamento más recetado.](WhatsApp%20Image%202024-06-04%20at%2017.39.03.jpeg)
 
 ## Ejercicio 7
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT P.nombre, C.fecha, C.diagnostico
-FROM pacientes P
-JOIN consultas C ON P.id_paciente = C.id_paciente
-WHERE C.fecha = (
-    SELECT MAX(C1.fecha)
-    FROM consultas C1
-    WHERE C1.id_paciente = P.id_paciente
-);
+	SELECT P.nombre, C.fecha, C.diagnostico
+	FROM pacientes P
+	JOIN consultas C ON P.id_paciente = C.id_paciente
+	WHERE C.fecha = (
+	    SELECT MAX(C1.fecha)
+	    FROM consultas C1
+	    WHERE C1.id_paciente = P.id_paciente
+	);
 
-###Output
+Output
 
 ![Paciente con última consulta y diagnóstico asociado.](WhatsApp%20Image%202024-06-04%20at%2017.40.03.jpeg)
 
 ## Ejercicio 8
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT M.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente, COUNT(C.id_consulta) AS Total_Consultas
-FROM consultas C
-JOIN medicos M ON C.id_medico = M.id_medico
-JOIN pacientes P ON C.id_paciente = P.id_paciente
-GROUP BY M.nombre, P.nombre
-ORDER BY M.nombre, P.nombre;
+	SELECT M.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente, COUNT(C.id_consulta) AS Total_Consultas
+	FROM consultas C
+	JOIN medicos M ON C.id_medico = M.id_medico
+	JOIN pacientes P ON C.id_paciente = P.id_paciente
+	GROUP BY M.nombre, P.nombre
+	ORDER BY M.nombre, P.nombre;
 
-###Output
+Output
 
 ![Médico y paciente con número total de consultas realizadas por cada médico para cada paciente, ordenado por médico y paciente.](WhatsApp%20Image%202024-06-04%20at%2017.40.55.jpeg)
 
 ## Ejercicio 9
 
-###Codigo utilizado
-SELECT M.nombre AS Nombre_Medicamento, COUNT(R.id_receta) AS Total_Recetas, 
-       T.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente
-FROM recetas R
-JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
-JOIN medicos T ON R.id_medico = T.id_medico
-JOIN pacientes P ON R.ID_Paciente = P.ID_Paciente
-GROUP BY M.nombre, T.nombre, P.nombre
-ORDER BY Total_Recetas DESC;
+Codigo utilizado
+	SELECT M.nombre AS Nombre_Medicamento, COUNT(R.id_receta) AS Total_Recetas, 
+	       T.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente
+	FROM recetas R
+	JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
+	JOIN medicos T ON R.id_medico = T.id_medico
+	JOIN pacientes P ON R.ID_Paciente = P.ID_Paciente
+	GROUP BY M.nombre, T.nombre, P.nombre
+	ORDER BY Total_Recetas DESC;
 
-###Output
+Output
 
 ![Nombre de medicamento, total de recetas, médico que las recetó y pacientes a los cuales se les recetó](WhatsApp%20Image%202024-06-04%20at%2017.21.15.jpeg)
 
 ## Ejercicio 10
 
-###Codigo utilizado
+Codigo utilizado
 
-SELECT M.nombre AS Nombre_Medicamento, COUNT(R.id_receta) AS Total_Recetas, 
-       T.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente
-FROM recetas R
-JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
-JOIN medicos T ON R.id_medico = T.id_medico
-JOIN pacientes P ON R.ID_Paciente = P.ID_Paciente
-GROUP BY M.nombre, T.nombre, P.nombre
-ORDER BY Total_Recetas DESC;
+	SELECT M.nombre AS Nombre_Medicamento, COUNT(R.id_receta) AS Total_Recetas, 
+	       T.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente
+	FROM recetas R
+	JOIN medicamentos M ON R.id_medicamento = M.id_medicamento
+	JOIN medicos T ON R.id_medico = T.id_medico
+	JOIN pacientes P ON R.ID_Paciente = P.ID_Paciente
+	GROUP BY M.nombre, T.nombre, P.nombre
+	ORDER BY Total_Recetas DESC;
 
-###Output
+Output
 
 ![Nombre del médico junto con el total de pacientes a los que ha atendido.](WhatsApp%20Image%202024-06-04%20at%2017.41.50.jpeg)
