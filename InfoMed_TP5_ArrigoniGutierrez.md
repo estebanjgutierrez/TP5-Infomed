@@ -49,6 +49,8 @@ Para las tablas Pacientes, Médicos, y Medicamentos, no hay dependencias transit
 
 ## Ejercicio 1
 
+Obtener el nombre y la dirección de los pacientes que viven en Buenos Aires.
+
 Codigo utilizado
 
 	SELECT nombre, calle, numero
@@ -60,6 +62,8 @@ Output
 ![Nombre de pacientes que viven en Bs. As.](WhatsApp%20Image%202024-06-04%20at%2017.22.55.jpeg)
 
 ## Ejercicio 2
+
+Obtener la cantidad de recetas emitidas por cada médico.
 
 Codigo utilizado:
 
@@ -74,6 +78,9 @@ Output
 
 ## Ejercicio 3
 
+Obtener el nombre de los pacientes junto con la fecha y el diagnóstico de todas las
+consultas médicas realizadas en junio del 2024.
+
 Codigo utilizado
 
 	SELECT P.nombre, C.fecha, C.diagnostico
@@ -86,6 +93,9 @@ Output
 ![Pacientes y diagnósticos junio 2024](WhatsApp%20Image%202024-06-04%20at%2017.24.18.jpeg)
 
 ## Ejercicio 4
+
+Obtener el nombre de los medicamentos prescritos más de una vez por el médico
+con ID igual a 2.
 
 Codigo utilizado
 
@@ -102,6 +112,9 @@ Output
 
 ## Ejercicio 5
 
+Obtener el nombre de los pacientes junto con la cantidad total de recetas que han
+recibido.
+
 Codigo Utilizado
 
 	SELECT P.nombre, COUNT(R.id_receta) AS Cantidad_Recetas
@@ -109,11 +122,13 @@ Codigo Utilizado
 	LEFT JOIN recetas R ON P.id_paciente = R.id_paciente
 	GROUP BY P.nombre;
 
-###Output
+Output
 
 ![Pacientes con recetas recibidas.](WhatsApp%20Image%202024-06-04%20at%2017.38.26.jpeg)
 
 ## Ejercicio 6
+Obtener el nombre del medicamento más recetado junto con la cantidad de recetas
+emitidas para ese medicamento.
 
 Codigo utilizado
 
@@ -129,6 +144,9 @@ Output
 ![Medicamento más recetado.](WhatsApp%20Image%202024-06-04%20at%2017.39.03.jpeg)
 
 ## Ejercicio 7
+
+Obtener el nombre del paciente junto con la fecha de su última consulta y el
+diagnóstico asociado.
 
 Codigo utilizado
 
@@ -147,6 +165,10 @@ Output
 
 ## Ejercicio 8
 
+Obtener el nombre del médico junto con el nombre del paciente y el número total de
+consultas realizadas por cada médico para cada paciente, ordenado por médico y
+paciente.
+
 Codigo utilizado
 
 	SELECT M.nombre AS Nombre_Medico, P.nombre AS Nombre_Paciente, COUNT(C.id_consulta) AS Total_Consultas
@@ -161,6 +183,10 @@ Output
 ![Médico y paciente con número total de consultas realizadas por cada médico para cada paciente, ordenado por médico y paciente.](WhatsApp%20Image%202024-06-04%20at%2017.40.55.jpeg)
 
 ## Ejercicio 9
+
+Obtener el nombre del medicamento junto con el total de recetas prescritas para ese
+medicamento, el nombre del médico que lo recetó y el nombre del paciente al que se
+le recetó, ordenado por total de recetas en orden descendente.
 
 Codigo utilizado
 	SELECT M.nombre AS Nombre_Medicamento, COUNT(R.id_receta) AS Total_Recetas, 
@@ -177,6 +203,9 @@ Output
 ![Nombre de medicamento, total de recetas, médico que las recetó y pacientes a los cuales se les recetó](WhatsApp%20Image%202024-06-04%20at%2017.21.15.jpeg)
 
 ## Ejercicio 10
+
+Obtener el nombre del médico junto con el total de pacientes a los que ha atendido,
+ordenado por el total de pacientes en orden descendente.
 
 Codigo utilizado
 
