@@ -24,26 +24,7 @@ La base de datos descripta es una base de datos relacional. Esto lo pude determi
 
 En primera instancia, la base de datos se encuentra normalizada. Para demostrar que efectivamente se encuentra normalizada, tomamos como criterio el cumplimiento de las primeras 3 Formas Normales.
 
-### Primera Forma Normal
-
-La primera forma normal requiere que cada columna de una tabla contenga solo valores atómicos (indivisibles) y que cada entrada de una columna tenga el mismo tipo de dato.
-
-Ya que cada atributo en las tablas Pacientes, Médicos, Medicamentos, Consultas, y Recetas contiene valores atómicos, podemos considerar que la base de datos ya cumple con la 1FN.
-
-### Segunda Forma Normal
-
-La segunda forma normal requiere que la base de datos esté en 1FN y que no haya dependencias parciales de la clave primaria, es decir, todos los atributos no clave deben depender de toda la clave primaria.
-
-Para las tablas Consultas y Recetas, necesitamos asegurarnos de que todos los atributos dependan de toda la clave primaria. Esto se cumple ya que:
-
-- En Consultas, ID_Medico y ID_Paciente dependen de ID_Consulta.
-- En Recetas, ID_Paciente, ID_Medico, y ID_Medicamento dependen de ID_Receta.
-
-### Tercer Forma Normal
-
-La tercera forma normal requiere que la base de datos esté en 2FN y que no haya dependencias transitivas, es decir, ningún atributo no clave debe depender de otro atributo no clave.
-
-Para las tablas Pacientes, Médicos, y Medicamentos, no hay dependencias transitivas, por lo que ya cumplen con la 3FN y por lo tanto se considera que la base de datos está normalizada.
+La base que se proporciona para este trabajo no está normalizada porque Buenos Aires está escrita tanto en minúsculas como mayúsculas y hay nombres que están mal escritos (buenos bires). Para poder salvar estos problemas se podría utilizar un programa que no sea sensible a mayúsculas (para que no diferencie entre Buenos Aires con minúscula y mayúscula), a la vez que se debería solicitar un curado de la base de datos para corregir la localidad mal escrita correspondiente.
 
 # Parte 2: SQL
 
